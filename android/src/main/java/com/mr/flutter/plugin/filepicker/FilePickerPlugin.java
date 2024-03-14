@@ -14,6 +14,7 @@ import androidx.lifecycle.LifecycleOwner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
