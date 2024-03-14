@@ -180,7 +180,7 @@ public class FilePickerPlugin implements MethodChannel.MethodCallHandler, Flutte
                 }
             }
 
-            allowedExtensions = new String[var1.length + var2.size()];
+            allowedExtensions = new String[allowedExtensionsMimes.length + additionalAllowedExtensions.size()];
 
             System.arraycopy(allowedExtensionsMimes, 0, allowedExtensions, 0, allowedExtensionsMimes.length);
             for (int i = 0; i < additionalAllowedExtensions.size(); i++) {
