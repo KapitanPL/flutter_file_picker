@@ -166,7 +166,8 @@ public class FilePickerPlugin implements MethodChannel.MethodCallHandler, Flutte
             isMultipleSelection = (boolean) arguments.get("allowMultipleSelection");
             withData = (boolean) arguments.get("withData");
             compressionQuality=(int) arguments.get("compressionQuality");
-            allowedExtensions = FileUtils.getMimeTypes((ArrayList<String>) arguments.get("allowedExtensions"));
+            allowedExtensionsMimes = FileUtils.getMimeTypes((ArrayList<String>) arguments.get("allowedExtensions"));
+            ArrayList<String> additionalAllowedExtensions;
 
             Map<String, String> customMimeTypeMap = (Map<String, String>) arguments.get("customMimeTypeMap");
             if (customMimeTypeMap != null && !customMimeTypeMap.isEmpty())
@@ -174,9 +175,16 @@ public class FilePickerPlugin implements MethodChannel.MethodCallHandler, Flutte
                 ArrayList<String> allowedExtensionsList = (ArrayList<String>) arguments.get("allowedExtensions");
                 for (String ext : allowedExtensionsList) {
                     if (customMimeTypeMap.containsKey(ext)) {
-                       allowedExtensions.add(customMimeTypeMap.get(ext));
+                       additionalAllowedExtensions.add(customMimeTypeMap.get(ext));
                     }
                 }
+            }
+
+            allowedExtensions = new String[var1.length + var2.size()];
+
+            System.arraycopy(allowedExtensionsMimes, 0, allowedExtensions, 0, allowedExtensionsMimes.length);
+            for (int i = 0; i < additionalAllowedExtensions.size(); i++) {
+                allowedExtensions[allowedExtensionsMimes.length + i] = additionalAllowedExtensions.get(i);
             }
         }
 
