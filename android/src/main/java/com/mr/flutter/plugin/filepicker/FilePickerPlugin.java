@@ -166,7 +166,7 @@ public class FilePickerPlugin implements MethodChannel.MethodCallHandler, Flutte
             isMultipleSelection = (boolean) arguments.get("allowMultipleSelection");
             withData = (boolean) arguments.get("withData");
             compressionQuality=(int) arguments.get("compressionQuality");
-            allowedExtensionsMimes = FileUtils.getMimeTypes((ArrayList<String>) arguments.get("allowedExtensions"));
+            String[] allowedExtensionsMimes = FileUtils.getMimeTypes((ArrayList<String>) arguments.get("allowedExtensions"));
             ArrayList<String> additionalAllowedExtensions;
 
             Map<String, String> customMimeTypeMap = (Map<String, String>) arguments.get("customMimeTypeMap");
